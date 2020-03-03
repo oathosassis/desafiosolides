@@ -15,16 +15,16 @@ Para iniciar o WebApp siga as seguintes instruções:
 $ git clone https://github.com/oathosassis/desafiosolides.git
 
 - Acesse o novo diretório
-$ cd desafio_solides
+$ cd desafiosolides
 
 - Instale os pacotes necessários
+yarn install --check-files (este comando único foi o suficiente em meu teste)
 yarn add bootstrap jquery popper.js
 yarn add inputmask
 yarn add @fortawesome/fontawesome-free
 $ bundle install --without production
 
-- Migre o Banco de Dados
-$ rails db:migrate
+- Crie o Banco de Dados
 
 - e vamos nessa!
 $ rails server
