@@ -31,5 +31,5 @@ $ rails server
 
 Dica!
 Após o cadastro de um estagiário, acesse ./db/seeds.rb e altere o parâmetro 'estagiario_id'.
-Substitua a mensagem 'COLOQUE AQUI SEU ID' pelo id referente e propague o Banco de Dados.
+Substitua a mensagem 'COLOQUE AQUI O ID' pelo id referente e propague o Banco de Dados.
 $ rails db:seed
