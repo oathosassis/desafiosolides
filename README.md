@@ -26,8 +26,10 @@ $ bundle install --without production
 - Migre o Banco de Dados
 $ rails db:migrate
 
-- Propague o Banco de Dados
-$ rails db:seed
-
 - e vamos nessa!
 $ rails server
+
+Dica!
+Após o cadastro de um estagiário, acesse ./db/seeds.rb e altere o parâmetro 'estagiario_id'.
+Substitua a mensagem 'COLOQUE AQUI SEU ID' pelo id referente e propague o Banco de Dados.
+$ rails db:seed
