@@ -13,9 +13,9 @@
         <% min_aux += Integer((jornada_recente.hora_final - jornada_recente.hora_inicial)/60) %>
       <td><%= jornada_recente.hora_final.strftime("%H:%M") %></td>
       <td class="d-none d-sm-table-cell"><%= cont_aux %></td>
-      <td class="d-none d-sm-table-cell"><%= min_aux %></td>
+      <td class="d-none d-sm-table-cell"><%= min_aux %> min.</td>
       <% if mostrar_botoes %>
-        <td style='padding: inherit; width: 1%;'>
+        <td class="d-print-none" style='padding: inherit; width: 1%;'>
           <%= button_tag '<i class="ace-icon fa fa-eye"></i>'.html_safe, type: 'button', disabled: true, class: 'btn btn-primary btn-info', style: "padding: 4px 6px 2px 6px; cursor: default;" %>
         </td>      
       <% end %>
@@ -25,7 +25,7 @@
       <td class="d-none d-sm-table-cell"><%= cont_aux %></td>
       <td class="d-none d-sm-table-cell">-----</td>
       <% if mostrar_botoes %>
-        <td style='padding: inherit; width: 1%;'>
+        <td class="d-print-none" style='padding: inherit; width: 1%;'>
           <%= button_tag '<i class="ace-icon fa fa-eye"></i>'.html_safe, type: 'button', disabled: true, class: 'btn btn-primary btn-info', style: "padding: 4px 6px 2px 6px; cursor: default;" %>
         </td>      
       <% end %>
@@ -45,9 +45,9 @@
         <% min_aux += Integer((jornada_recente.hora_final - jornada_recente.hora_inicial)/60) %>
       <td><%= jornada_recente.hora_final.strftime("%H:%M") %></td>
       <td class="d-none d-sm-table-cell"><%= cont_aux %></td>
-      <td class="d-none d-sm-table-cell"><%= min_aux %></td>
+      <td class="d-none d-sm-table-cell"><%= min_aux %> min.</td>
       <% if mostrar_botoes %>
-        <td style='padding: inherit; width: 1%;'>
+        <td class="d-print-none" style='padding: inherit; width: 1%;'>
           <%= button_tag '<i class="ace-icon fa fa-eye"></i>'.html_safe, type: 'button', disabled: true, class: 'btn btn-primary btn-info', style: "padding: 4px 6px 2px 6px; cursor: default;" %>
         </td>      
       <% end %>
@@ -57,7 +57,7 @@
       <td class="d-none d-sm-table-cell"><%= cont_aux %></td>
       <td class="d-none d-sm-table-cell">-----</td>
       <% if mostrar_botoes %>
-        <td style='padding: inherit; width: 1%;'>
+        <td class="d-print-none" style='padding: inherit; width: 1%;'>
           <%= button_tag '<i class="ace-icon fa fa-eye"></i>'.html_safe, type: 'button', disabled: true, class: 'btn btn-primary btn-info', style: "padding: 4px 6px 2px 6px; cursor: default;" %>
         </td>      
       <% end %>

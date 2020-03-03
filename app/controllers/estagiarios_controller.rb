@@ -23,7 +23,8 @@ class EstagiariosController < ApplicationController
   def update
     @estagiario = Estagiario.find(params[:id])
     if @estagiario.update_attributes(estagiario_params)
-      redirect_to edit_estagiario_path(current_user)
+      flash[:success] = "Perfil atualizado com sucesso!"
+      redirect_to jornadas_path
     else
       render 'edit'
     end

@@ -4,7 +4,7 @@
   </h2>
   
   <div class="row" style="margin-bottom: 25px;">
-    <div class="col-12">
+    <div class="col-12 d-print-none">
       <%= form_tag({controller: "jornadas", action: "minhas_jornadas"}, method: "get") do %>
         <div class="input-group col-sm-10 offset-sm-1 col-md-8 offset-md-2">
           <span class="input-group-addon" style="padding-right: 4px; padding-top: 8px; width: 69px;">
@@ -24,6 +24,15 @@
           </div>
         </div>
       <% end %>
+    </div>
+    <div class="col-12">
+      <div class=" col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+        <% flash.each do |type, msg| %>
+          <div class=" alert alert-<%= type %> d-print-none" style="padding: 5px 20px 5px 20px; margin-bottom: 10px; margin-left: 69px;">
+            <%= msg %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
@@ -54,8 +63,8 @@
           </tbody>
         </table>
       </div>
-      <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="margin-left: 5px;"></i> <b>Voltar</b>'.html_safe, jornadas_path, style: "float: left; font-size: 16px; margin-bottom: 20px;" %>
-      <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="margin-left: 5px;"></i> <b>Imprimir</b>'.html_safe, jornadas_path, style: "float: right; font-size: 16px; margin-bottom: 20px;" %>
+      <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true" style="margin-left: 5px;"></i> <b>Voltar</b>'.html_safe, jornadas_path, class: "d-print-none", style: "float: left; font-size: 16px; margin-bottom: 20px;" %>
+      <%= link_to '<b>Imprimir</b> <i class="fa fa-print" aria-hidden="true" style="margin-left: 5px;"></i> '.html_safe, '', class: "d-print-none", style: "float: right; font-size: 16px; margin-bottom: 20px;", onclick: "window.print();" %>
     </div>
   </div>
 </div>
