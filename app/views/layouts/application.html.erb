@@ -19,18 +19,18 @@
           <a class="navbar-brand" href="<%= jornadas_path %>">
             <img class="mb-4" src="https://www.solides.com.br/static/media/logo-branca.24eec9e5.svg" alt="" width="120" height="30" style="margin-bottom: 2px !important;">
           </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarjornada" aria-controls="navbarjornada" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse text" id="navbarsExample03">
+          <div class="collapse navbar-collapse text" id="navbarjornada" style="margin-top: 2px;">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
                 <%= link_to 'Início', jornadas_path, class: "nav-link" %>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Olá <%= current_user.nome %></a>
-                <div class="dropdown-menu" aria-labelledby="dropdown03" style="margin-bottom: 10px;">
+                <div class="dropdown-menu" aria-labelledby="dropdown03" style="margin-bottom: 10px; margin-top: 0px;">
                   <%= link_to 'Minhas Jornadas', minhas_jornadas_path, class: "dropdown-item" %>
                   <%= link_to 'Minha conta', edit_estagiario_path(current_user), class: "dropdown-item" %>
                   <%= link_to 'Sair', logout_path, method: 'delete', class: "dropdown-item" %>

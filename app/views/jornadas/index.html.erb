@@ -1,52 +1,44 @@
 <div class="container" style="margin-top: 20px;">
   <div class="row" style="border-style: solid; border-width: 0px 0px 3px 0px; border-color: #ecd8bf; margin-bottom: 15px">
-	<div class="col-sm-5 text-center" style="margin-bottom: 20px;">
-	  <h2 style="margin-top: 0px; margin-bottom: 5px; color: #c5c5c5; margin-bottom: 0px;">
-	  	<%= Date.today.strftime("%d/%m/%Y") %>
-	  </h2>
-	  <h1 class="d-none d-md-block d-lg-block" style="font-size: 80px; color: #c5c5c5; margin-top: 0px;"> 
-	  	<%= Time.now.strftime("%H:%M") %><br>
-	  </h1>
-	  <h1 class="d-none d-sm-block d-md-none" style="font-size: 65px; color: #c5c5c5; margin-top: 5px;">
-	  	<%= Time.now.strftime("%H:%M") %><br>
-	  </h1>
-	  <h1 class="d-block d-sm-none" style="font-size: 80px; color: #c5c5c5; margin-top: 5px; margin-bottom: 5px;"> 
-	  	<%= Time.now.strftime("%H:%M") %><br>
-	  </h1>
+	  <div class="col-sm-5 text-center" style="margin-bottom: 20px;">
+	    <h2 style="margin-top: 0px; margin-bottom: 5px; color: #c5c5c5; margin-bottom: 0px;"><%= Date.today.strftime("%d/%m/%Y") %></h2>
+	    <h1 class="d-none d-md-block d-lg-block" style="font-size: 80px; color: #c5c5c5; margin-top: 0px;"> <%= Time.now.strftime("%H:%M") %></h1>
+	    <h1 class="d-none d-sm-block d-md-none" style="font-size: 65px; color: #c5c5c5; margin-top: 5px;"><%= Time.now.strftime("%H:%M") %></h1>
+	    <h1 class="d-block d-sm-none" style="font-size: 80px; color: #c5c5c5; margin-top: 5px; margin-bottom: 5px;"> <%= Time.now.strftime("%H:%M") %></h1>
 
-    <% if @iniciar %>
-      <%= form_for @jornada do |jornada| %>
-        <%= jornada.submit 'Iniciar', class: "btn btn-block", style: "background-color: #1b92bf; border-color: #1b92bf; border-radius: 5px 5px 0px 0px;" %>
+      <% if @iniciar %>
+        <%= form_for @jornada do |jornada| %>
+          <%= jornada.submit 'Iniciar', class: "btn btn-block", style: "background-color: #1b92bf; border-color: #1b92bf; border-radius: 5px 5px 0px 0px;" %>
+        <% end %>
+	    <% else %>
+        <%= button_tag 'Iniciar', type: 'button', disabled: true, class: "btn btn-block", style: "background-color: #1b92bf; border-color: #1b92bf; border-radius: 5px 5px 0px 0px; cursor: default;" %>
       <% end %>
-	  <% else %>
-      <%= button_tag 'Iniciar', type: 'button', disabled: true, class: "btn btn-block", style: "background-color: #1b92bf; border-color: #1b92bf; border-radius: 5px 5px 0px 0px; cursor: default;" %>
-    <% end %>
 
-    <% if @interromper %>
-      <%= form_for @jornada, :method => :PUT do |jornada| %>
-        <%= jornada.hidden_field :tipo, :value => 'Interrompida' %>
-        <%= jornada.submit 'Interromper', class: "btn btn-block", style: "background-color: #e6c15d; border-color: #e6c15d; margin-top: 5px;" %>
-      <% end %>
-    <% else %>
-      <%= button_tag 'Interromper', type: 'button', disabled: true, class: "btn btn-block", style: "background-color: #e6c15d; border-color: #e6c15d; margin-top: 5px; cursor: default;" %>
-	  <% end %>
+      <% if @interromper %>
+        <%= form_for @jornada, :method => :PUT do |jornada| %>
+          <%= jornada.hidden_field :tipo, :value => 'Interrompida' %>
+          <%= jornada.submit 'Interromper', class: "btn btn-block", style: "background-color: #e6c15d; border-color: #e6c15d; margin-top: 5px;" %>
+        <% end %>
+      <% else %>
+        <%= button_tag 'Interromper', type: 'button', disabled: true, class: "btn btn-block", style: "background-color: #e6c15d; border-color: #e6c15d; margin-top: 5px; cursor: default;" %>
+	    <% end %>
 
-    <% if @retomar %>
-      <%= form_for @jornada do |jornada| %>
-        <%= jornada.submit 'Retomar', class: "btn btn-block", style: "background-color: #54a678; border-color: #54a678; margin-top: 5px;" %>
+      <% if @retomar %>
+        <%= form_for @jornada do |jornada| %>
+          <%= jornada.submit 'Retomar', class: "btn btn-block", style: "background-color: #54a678; border-color: #54a678; margin-top: 5px;" %>
+        <% end %>
+      <% else %>
+        <%= button_tag 'Retomar', type: 'button', disabled: true, class: "btn btn-block", style: "background-color: #54a678; border-color: #54a678; margin-top: 5px; cursor: default;" %>
       <% end %>
-    <% else %>
-      <%= button_tag 'Retomar', type: 'button', disabled: true, class: "btn btn-block", style: "background-color: #54a678; border-color: #54a678; margin-top: 5px; cursor: default;" %>
-    <% end %>
 	  
-    <% if @terminar %>
-      <%= form_for @jornada, :method => :PUT do |jornada| %>
-        <%= jornada.hidden_field :tipo, :value => 'Terminada' %>
-        <%= jornada.submit 'Terminar', class: "btn btn-block", style: "background-color: #ce696f; border-color: #ce696f; border-radius: 0px 0px 5px 5px; margin-top: 5px;" %>
+      <% if @terminar %>
+        <%= form_for @jornada, :method => :PUT do |jornada| %>
+          <%= jornada.hidden_field :tipo, :value => 'Terminada' %>
+          <%= jornada.submit 'Terminar', class: "btn btn-block", style: "background-color: #ce696f; border-color: #ce696f; border-radius: 0px 0px 5px 5px; margin-top: 5px;" %>
+        <% end %>
+      <% else %>
+        <%= button_tag 'Terminar', type: 'button', disabled: true, class: "btn btn-block", style: "background-color: #ce696f; border-color: #ce696f; border-radius: 0px 0px 5px 5px; margin-top: 5px; cursor: default;" %>
       <% end %>
-    <% else %>
-      <%= button_tag 'Terminar', type: 'button', disabled: true, class: "btn btn-block", style: "background-color: #ce696f; border-color: #ce696f; border-radius: 0px 0px 5px 5px; margin-top: 5px; cursor: default;" %>
-    <% end %>
 
 	  <hr size="30" class="d-block d-sm-none" style="border-color: #f7e3ca; border-top-width: 3px; margin-top: 25px; margin-bottom: 0px;">
 	</div>
@@ -56,6 +48,13 @@
         <h2 class="pb-2 mb-0" style="margin: 0px 0px 0px 5px; color: #c5c5c5;">
           Jornada Atual
         </h2>
+
+        <% flash.each do |type, msg| %>
+          <div class=" alert alert-<%= type %>" style="padding: 5px 20px 5px 20px; margin-bottom: 10px;">
+            <%= msg %>
+          </div>
+        <% end %>
+
         <% if @atual_jornada.present? %>
           <% @atual_jornada.each_with_index do |jornada_atual, index| %>
             <% if index == 0 %>
@@ -125,7 +124,13 @@
             </tr>
           </thead>
           <tbody>
-            <%= render 'table_body_jornadas', ultimas_jornadas: @ultimas_jornadas, mostrar_botoes: false %>
+            <% if @ultimas_jornadas.present? %>
+              <%= render 'table_body_jornadas', ultimas_jornadas: @ultimas_jornadas, mostrar_botoes: false %>
+            <% else %>
+              <tr>
+                <td colspan="5">Ops, nenhuma jornada nos últimos dias.</td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </div>

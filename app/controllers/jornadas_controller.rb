@@ -1,5 +1,6 @@
 class JornadasController < ApplicationController
-  
+  before_action :authorize
+
   def index 
   	@iniciar = current_user.jornadas.find_by(data: Date.today).nil?
   	if @iniciar
@@ -32,9 +33,13 @@ class JornadasController < ApplicationController
   	@jornada = Jornada.new(jornada_params)
   	
   	if @jornada.save
-  	  flash.now[:success] = "Sucesso!"
+      if params[:commit] == "Iniciar"
+        flash[:info] = "Jornada iniciada com sucesso!"
+      elsif params[:commit] == "Retomar"
+        flash[:success] = "Jornada retomada com sucesso!"
+      end
     else
-      flash.now[:danger] = "Erro!"
+      flash[:danger] = "Ops, houve um erro. Tente novamente."
     end
     redirect_to jornadas_path
   end
@@ -42,9 +47,13 @@ class JornadasController < ApplicationController
   def update
   	jornada = Jornada.find(params[:id]) 
     if jornada.update_attributes(:tipo => params[:jornada][:tipo], :hora_final => Time.now)
-      flash[:success] = "Sucesso!"
+      if params[:commit] == "Interromper"
+        flash[:warning] = "Jornada interrompida com sucesso!"
+      elsif params[:commit] == "Terminar"
+        flash[:danger] = "Jornada terminada com sucesso!"
+      end
     else
-      flash[:danger] = "Erro!"
+      flash[:danger] = "Ops, houve um erro. Tente novamente."
     end
     redirect_to jornadas_path
   end

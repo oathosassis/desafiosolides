@@ -1,5 +1,6 @@
 class SessoesController < ApplicationController
   before_action :bloquear_acesso, except: [:destroy]
+  before_action :authorize, only: [:destroy]
 
   def new
   end

@@ -1,5 +1,6 @@
 class EstagiariosController < ApplicationController
   before_action :bloquear_acesso, except: [:edit, :update]
+  before_action :authorize, except: [:new, :create]
 
   def new
     @estagiario = Estagiario.new
@@ -8,6 +9,7 @@ class EstagiariosController < ApplicationController
   def create
   	@estagiario = Estagiario.new(estagiario_params)
   	if @estagiario.save
+      flash[:success] = "Usuário criado com sucesso!"
       redirect_to login_path
     else
       render 'new'

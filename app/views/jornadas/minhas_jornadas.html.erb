@@ -44,7 +44,13 @@
             </tr>
           </thead>
           <tbody>
-            <%= render 'table_body_jornadas', ultimas_jornadas: @minhas_jornadas, mostrar_botoes: true %>
+            <% if @minhas_jornadas.present? %>
+              <%= render 'table_body_jornadas', ultimas_jornadas: @minhas_jornadas, mostrar_botoes: true %>
+            <% else %>
+              <tr>
+                <td colspan="6">Ops, nenhuma jornada nos últimos dias.</td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
