@@ -1,0 +1,73 @@
+<% data_aux = ultimas_jornadas.first.data %>
+<% cont_aux, min_aux = 0, 0 %>
+            
+<% ultimas_jornadas.each_with_index do |jornada_recente, index| %>
+  <% if (jornada_recente.data == data_aux && cont_aux == 0) %>
+    <% cont_aux += 1 %>
+    <tr>
+      <td><%= jornada_recente.data.strftime("%d/%m/%Y") %></td>
+      <td><%= jornada_recente.hora_inicial.strftime("%H:%M") %></td>
+                  
+    <% if ((ultimas_jornadas[index + 1].present?) && (ultimas_jornadas[index + 1].data != data_aux)) || (!ultimas_jornadas[index + 1].present?) %>
+      <% if jornada_recente.hora_final.present? && jornada_recente.Terminada?%>
+        <% min_aux += Integer((jornada_recente.hora_final - jornada_recente.hora_inicial)/60) %>
+      <td><%= jornada_recente.hora_final.strftime("%H:%M") %></td>
+      <td class="d-none d-sm-table-cell"><%= cont_aux %></td>
+      <td class="d-none d-sm-table-cell"><%= min_aux %></td>
+      <% if mostrar_botoes %>
+        <td style='padding: inherit; width: 1%;'>
+          <%= button_tag '<i class="ace-icon fa fa-eye"></i>'.html_safe, type: 'button', disabled: true, class: 'btn btn-primary btn-info', style: "padding: 4px 6px 2px 6px; cursor: default;" %>
+        </td>      
+      <% end %>
+    </tr>
+      <% else %>
+      <td>-------</td>
+      <td class="d-none d-sm-table-cell"><%= cont_aux %></td>
+      <td class="d-none d-sm-table-cell">-----</td>
+      <% if mostrar_botoes %>
+        <td style='padding: inherit; width: 1%;'>
+          <%= button_tag '<i class="ace-icon fa fa-eye"></i>'.html_safe, type: 'button', disabled: true, class: 'btn btn-primary btn-info', style: "padding: 4px 6px 2px 6px; cursor: default;" %>
+        </td>      
+      <% end %>
+    </tr>
+      <% end %>
+      <% data_aux = ultimas_jornadas[index + 1].data if ultimas_jornadas[index + 1].present?%>
+      <% cont_aux, min_aux = 0, 0 %> 
+    <% else %>
+      <% min_aux += Integer((jornada_recente.hora_final - jornada_recente.hora_inicial)/60) %>
+    <% end %>
+              
+  <% elsif cont_aux > 0 %>
+    <% cont_aux += 1 %>
+
+    <% if ((ultimas_jornadas[index + 1].present?) && (ultimas_jornadas[index + 1].data != data_aux)) || (!ultimas_jornadas[index + 1].present?) %>
+      <% if jornada_recente.hora_final.present? && jornada_recente.Terminada? %>
+        <% min_aux += Integer((jornada_recente.hora_final - jornada_recente.hora_inicial)/60) %>
+      <td><%= jornada_recente.hora_final.strftime("%H:%M") %></td>
+      <td class="d-none d-sm-table-cell"><%= cont_aux %></td>
+      <td class="d-none d-sm-table-cell"><%= min_aux %></td>
+      <% if mostrar_botoes %>
+        <td style='padding: inherit; width: 1%;'>
+          <%= button_tag '<i class="ace-icon fa fa-eye"></i>'.html_safe, type: 'button', disabled: true, class: 'btn btn-primary btn-info', style: "padding: 4px 6px 2px 6px; cursor: default;" %>
+        </td>      
+      <% end %>
+    </tr>
+      <% else %>
+      <td>-------</td>
+      <td class="d-none d-sm-table-cell"><%= cont_aux %></td>
+      <td class="d-none d-sm-table-cell">-----</td>
+      <% if mostrar_botoes %>
+        <td style='padding: inherit; width: 1%;'>
+          <%= button_tag '<i class="ace-icon fa fa-eye"></i>'.html_safe, type: 'button', disabled: true, class: 'btn btn-primary btn-info', style: "padding: 4px 6px 2px 6px; cursor: default;" %>
+        </td>      
+      <% end %>
+    </tr>
+      <% end %>
+      <% data_aux = ultimas_jornadas[index + 1].data if ultimas_jornadas[index + 1].present? %>
+      <% cont_aux, min_aux = 0, 0 %>
+
+    <% else %>
+      <% min_aux += Integer((jornada_recente.hora_final - jornada_recente.hora_inicial)/60) %>
+    <% end %>
+  <% end %>
+<% end %>
