@@ -1,24 +1,33 @@
 # README
+DESAFIO SOLIDES - Controle de Ponto
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Importante!
+A instalação do Ruby, Rails e suas dependências foram baseadas no guia abaixo:
+https://gorails.com/setup/ubuntu/18.04
+Obs: rbenv foi o método utilizado na instalação do Ruby.
 
-Things you may want to cover:
+Versões: 
+- Ruby > 2.7.0
+- Rails > 6.0.2.1
 
-* Ruby version
+Para iniciar o WebApp siga as seguintes instruções:
+- Clone o repositório 
+$ git clone https://github.com/oathosassis/desafiosolides.git
 
-* System dependencies
+- Acesse o novo diretório
+$ cd desafio_solides
 
-* Configuration
+- Instale os pacotes necessários
+yarn add bootstrap jquery popper.js
+yarn add inputmask
+yarn add @fortawesome/fontawesome-free
+$ bundle install --without production
 
-* Database creation
+- Migre o Banco de Dados
+$ rails db:migrate
 
-* Database initialization
+- Propague o Banco de Dados
+$ rails db:seed
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- e vamos nessa!
+$ rails server
